@@ -321,7 +321,7 @@ class FlashMessages implements \Anax\DI\IInjectionAware {
     protected function clear($types=[])
     {
         if ((is_array($types) && empty($types)) || is_null($types) || !$types) {
-            unset($_SESSION['flash_messages']);
+            $this->di->session->set('flash_messages', null);
         } elseif (!is_array($types)) {
             $types = [$types];
         }
